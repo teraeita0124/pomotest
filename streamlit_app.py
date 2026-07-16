@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Pomodoro Timer", page_icon="🍅")
 
 # ----------------------------
-# 初回だけ状態を作る
+# 初回だけ状態を作るll
 # ----------------------------
 if "focus_minutes" not in st.session_state:
     st.session_state.focus_minutes = 25
