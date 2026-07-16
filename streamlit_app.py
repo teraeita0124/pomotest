@@ -1,7 +1,7 @@
 import time
 import streamlit as st
 
-st.set_page_config(page_title="Pomodoro Timer", page_icon="🍅")
+st.set_page_config(page_title="tera Timer", page_icon="🍅")
 
 # ----------------------------
 # 初回だけ状態を作るll
