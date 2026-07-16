@@ -96,7 +96,7 @@ if st.session_state.running:
 # ----------------------------
 # 表示
 # ----------------------------
-st.title("🍅 Pomodoro Timer")
+st.title("🍅 Tera Timer")
 
 st.subheader(f"現在：{st.session_state.mode}")
 
