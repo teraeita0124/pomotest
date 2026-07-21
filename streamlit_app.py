@@ -1,7 +1,7 @@
 import time
 import streamlit as st
 
-st.set_page_config(page_title="tera Timer", page_icon="🍅")
+st.set_page_config(page_title="pomo Timer", page_icon="🍅")
 
 # ----------------------------
 # 初回だけ状態を作るll
@@ -96,7 +96,7 @@ if st.session_state.running:
 # ----------------------------
 # 表示
 # ----------------------------
-st.title("🍅 Tera Timer")
+st.title("🍅 pomo Timer")
 
 st.subheader(f"現在：{st.session_state.mode}")
 
