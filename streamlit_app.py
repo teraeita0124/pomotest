@@ -7,7 +7,7 @@ st.set_page_config(page_title="pomo Timer", page_icon="🍅")
 # 初回だけ状態を作るll
 # ----------------------------
 if "focus_minutes" not in st.session_state:
-    st.session_state.focus_minutes = 15
+    st.session_state.focus_minutes = 25
 
 if "break_minutes" not in st.session_state:
     st.session_state.break_minutes = 5
