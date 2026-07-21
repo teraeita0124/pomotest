@@ -1,5 +1,7 @@
 import time
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+
+import streamlit as st
 
 import streamlit as st
 
@@ -63,7 +65,38 @@ if not st.session_state.running:
 # タイトル
 # -------------------------
 st.title("🍅 ポモドーロタイマー")
+# -------------------------
+# 日本時間（JST）のデジタル時計
+# -------------------------
+jst = timezone(timedelta(hours=9))
+now = datetime.now(jst)
 
+clock = now.strftime("%H:%M:%S")
+today = now.strftime("%Y/%m/%d")
+
+st.markdown(
+    f"""
+    <div style="
+        background-color:#222222;
+        color:#00FF66;
+        padding:20px;
+        border-radius:15px;
+        text-align:center;
+        margin-bottom:20px;
+    ">
+        <div style="font-size:22px;">
+            🇯🇵 日本時間
+        </div>
+        <div style="font-size:60px; font-weight:bold;">
+            {clock}
+        </div>
+        <div style="font-size:22px;">
+            {today}
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 # 現在時刻
 now = datetime.now().strftime("%H:%M:%S")
 st.write(f"🕒 現在時刻：**{now}**")
