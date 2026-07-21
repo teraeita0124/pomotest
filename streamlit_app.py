@@ -104,16 +104,72 @@ st.write(f"🕒 現在時刻：**{now}**")
 st.subheader(f"現在のモード：{st.session_state.mode}")
 
 # -------------------------
-# 残り時間表示
+# 残り時間とプログレスリング
 # -------------------------
+
 minutes = st.session_state.remaining_seconds // 60
 seconds = st.session_state.remaining_seconds % 60
 
+# 現在の時間設定を秒に変換
+if st.session_state.mode == "集中":
+    total_seconds = st.session_state.focus_minutes * 60
+else:
+    total_seconds = st.session_state.break_minutes * 60
+
+# 残り時間の割合を計算
+progress = st.session_state.remaining_seconds / total_seconds
+
+# 円の進み具合（0〜100）
+progress_percent = progress * 100
+
+time_text = f"{minutes:02}:{seconds:02}"
+
 st.markdown(
     f"""
-    <h1 style="text-align:center;font-size:70px;">
-    {minutes:02}:{seconds:02}
-    </h1>
+    <div style="
+        width:260px;
+        height:260px;
+        border-radius:50%;
+        background:
+        conic-gradient(
+            #00CC66 {progress_percent}%,
+            #DDDDDD {progress_percent}%
+        );
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        margin:auto;
+    ">
+
+        <div style="
+            width:210px;
+            height:210px;
+            background:white;
+            border-radius:50%;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        ">
+
+            <div style="
+                font-size:55px;
+                font-weight:bold;
+                color:#222222;
+            ">
+                {time_text}
+            </div>
+
+            <div style="
+                font-size:20px;
+                color:#555555;
+            ">
+                {st.session_state.mode}
+            </div>
+
+        </div>
+
+    </div>
     """,
     unsafe_allow_html=True,
 )
